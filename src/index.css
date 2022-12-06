@@ -1,13 +1,19 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html {
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*,
+::after,
+::before {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Inconsolata', monospace;
+  background-image: url("https://phonoteka.org/uploads/posts/2022-02/thumbs/1645198886_3-phonoteka-org-p-fon-dengi-moneti-3.jpg");
+  background-color: #e4e3d6;
+  background-blend-mode: overlay;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 600px;
 }
