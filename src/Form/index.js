@@ -5,14 +5,22 @@ import { currencies } from "../Currencies";
 const Form = () => {
 
   const [amount, setAmount] = useState("0.00");
-  const [currency, setCurrency] = useState("");
+  const [currency, setCurrency] = useState(currencies[0].short);
+  const [result, setResult] = useState("");
 
   const onInputChange = ({ target }) => setAmount(target.value);
 
   const onSelectChange = ({ target }) => setCurrency(target.value);
 
+  const calculateResult = (amount, currency) => {
+    const { rate, short } = currencies.find(({ short }) => short === currency);
+
+    setResult(`${(+amount / rate).toFixed(2)} ${short}`);
+  }
+
   const onFormSubmit = (event) => {
     event.preventDefault();
+    calculateResult(amount, currency);
   }
 
   return (
@@ -63,7 +71,7 @@ const Form = () => {
         </p>
         <p className="form__paragraph form__paragraph--condition">*Wartość wymagana</p>
         <p className="form__paragraph form__paragraph--amount">Nowa kwota wynosi:<strong
-          className="form__strong"></strong></p>
+          className="form__strong"></strong>{result}</p>
       </fieldset>
     </form>
   )
