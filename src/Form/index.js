@@ -1,13 +1,13 @@
 import "./style.css";
 import { useState } from "react";
+import { currencies } from "../Currencies";
 
 const Form = () => {
 
   const [amount, setAmount] = useState("0.00");
+  const [currency, setCurrency] = useState("");
 
   const onInputChange = ({ target }) => setAmount(target.value);
-
-  const [currency, setCurrency] = useState("");
 
   const onSelectChange = ({ target }) => setCurrency(target.value);
 
@@ -45,15 +45,21 @@ const Form = () => {
               value={currency}
               onChange={onSelectChange}
             >
-              <option value="EUR">EUR - Euro</option>
-              <option value="USD">USD - Dolar amerykański</option>
-              <option value="GBP">GBP - Funt brytyjski</option>
-              <option value="CHF">CHF - Frank Szwajcarski</option>
+              {currencies.map((currency) => (
+                <option
+                  key={currency.short}
+                  value={currency.short}
+                >
+                  {currency.name}
+                </option>
+              ))};
             </select>
           </label>
         </p>
         <p>
-          <button className="form__button">Przelicz kwotę!</button>
+          <button
+            className="form__button"
+          >Przelicz kwotę!</button>
         </p>
         <p className="form__paragraph form__paragraph--condition">*Wartość wymagana</p>
         <p className="form__paragraph form__paragraph--amount">Nowa kwota wynosi:<strong
