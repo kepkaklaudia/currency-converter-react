@@ -71,7 +71,7 @@ const Form = () => {
         </p>
         <p className="form__paragraph form__paragraph--condition">*Wartość wymagana</p>
         <p className="form__paragraph form__paragraph--amount">Nowa kwota wynosi:<strong
-          className="form__strong"></strong>{result}</p>
+          className="form__strong">{result}</strong></p>
       </fieldset>
     </form>
   )
