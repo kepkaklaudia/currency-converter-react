@@ -3,7 +3,6 @@ import { useState } from "react";
 import { currencies } from "../Currencies";
 
 const Form = () => {
-
   const [amount, setAmount] = useState("0.00");
   const [currency, setCurrency] = useState(currencies[0].short);
   const [result, setResult] = useState("");
@@ -41,7 +40,8 @@ const Form = () => {
               max="999999999999"
               value={amount}
               onChange={onInputChange}
-              required />
+              required
+            />
           </label>
         </p>
         <p>
@@ -67,7 +67,9 @@ const Form = () => {
         <p>
           <button
             className="form__button"
-          >Przelicz kwotę!</button>
+          >
+            Przelicz kwotę!
+          </button>
         </p>
         <p className="form__paragraph form__paragraph--condition">*Wartość wymagana</p>
         <p className="form__paragraph form__paragraph--amount">Nowa kwota wynosi:<strong
