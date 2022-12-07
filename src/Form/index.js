@@ -1,6 +1,6 @@
 import "./style.css";
+import { currencies } from "../currencies.js";
 import { useState } from "react";
-import { currencies } from "../Currencies";
 
 const Form = () => {
   const [amount, setAmount] = useState("0.00");
