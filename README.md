@@ -1,4 +1,4 @@
-## img src="public/icon.png" height="30"/> Currency Converter Website
+## <img src="public/icon.png" height="30"/> Currency Converter Website
 <img src="images/Currency%20Converter.gif" width="250" height="250"/>
 
 <img src="images/myIcons/kk.png" height="15"/>Made by Klaudia Kępka
