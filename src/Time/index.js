@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import "./style.css";
 
 const Time = () => {
-
 	const [date, setDate] = useState(new Date());
 
 	const formattedDate = date.toLocaleString("pl", {
@@ -25,7 +24,7 @@ const Time = () => {
 	}, []);
 
 	return (
-		<div className="time__container">
+		<div className="time">
 			<>Dzisiaj jest {formattedDate}</>
 		</div>
 	);
