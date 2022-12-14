@@ -1,6 +1,6 @@
-import "./style.css";
 import { currencies } from "../currencies.js";
 import { useState } from "react";
+import { Fieldset, Legend, Text, Input, Select, Button, Paragraph, Strong } from "./styled";
 
 const Form = () => {
   const [amount, setAmount] = useState("0.00");
@@ -14,7 +14,7 @@ const Form = () => {
   const calculateResult = (amount, currency) => {
     const { rate, short } = currencies.find(({ short }) => short === currency);
 
-    setResult(`${(+amount / rate).toFixed(2)} ${short}`);
+    setResult(`${(+amount / rate).toFixed(2)}\u00A0${short}`);
   }
 
   const onFormSubmit = (event) => {
@@ -24,15 +24,14 @@ const Form = () => {
 
   return (
     <form onSubmit={onFormSubmit}>
-      <fieldset className="form__fieldset">
-        <legend className="form__legend">
+      <Fieldset>
+        <Legend>
           Kalkulator walut
-        </legend>
+        </Legend>
         <p>
           <label>
-            <span className="form__text">Kwota PLN*</span>
-            <input
-              className="form__field"
+            <Text>Kwota PLN*</Text>
+            <Input
               type="number"
               title="Kwota PLN do przeliczenia"
               step="0.1"
@@ -46,9 +45,8 @@ const Form = () => {
         </p>
         <p>
           <label>
-            <span className="form__text">Wybierz walutę</span>
-            <select
-              className="form__select"
+            <Text>Wybierz walutę</Text>
+            <Select
               title="Na jaką walutę przeliczyć PLN"
               value={currency}
               onChange={onSelectChange}
@@ -61,20 +59,17 @@ const Form = () => {
                   {currency.name}
                 </option>
               ))};
-            </select>
+            </Select>
           </label>
         </p>
         <p>
-          <button
-            className="form__button"
-          >
+          <Button>
             Przelicz kwotę!
-          </button>
+          </Button>
         </p>
-        <p className="form__paragraph form__paragraph--condition">*Wartość wymagana</p>
-        <p className="form__paragraph form__paragraph--amount">Nowa kwota wynosi:<strong
-          className="form__strong">{result}</strong></p>
-      </fieldset>
+        <Paragraph condition>*Wartość wymagana</Paragraph>
+        <Paragraph amount>Nowa kwota wynosi:<Strong> {result}</Strong></Paragraph>
+      </Fieldset>
     </form>
   )
 };
