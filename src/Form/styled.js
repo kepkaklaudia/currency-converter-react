@@ -1,4 +1,4 @@
-import styled, {css} from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Fieldset = styled.fieldset`
 	border: none;
@@ -66,11 +66,11 @@ export const Button = styled.button`
 `;
 
 export const Paragraph = styled.p`
-	${({condition}) => condition && css`
+	${({ condition }) => condition && css`
 		font-size: 12px;
 	`}
 
-	${({amount}) => amount && css`
+	${({ amount }) => amount && css`
 		font-family: 'Cinzel', serif;
   	padding-top: 30px;
 
