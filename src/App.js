@@ -1,4 +1,4 @@
-import Container from "./Container";
+import { Container } from "./Container/styled";
 import Form from "./Form";
 import Time from "./Time";
 
