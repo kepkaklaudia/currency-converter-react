@@ -1,26 +1,27 @@
-import { currencies } from "../currencies.js";
+import { useData } from "../currencies.js";
 import { useState } from "react";
 import { Fieldset, Legend, Text, Input, Select, Button, Paragraph, Strong } from "./styled";
 
 const Form = () => {
   const [amount, setAmount] = useState("0.00");
-  const [currency, setCurrency] = useState(currencies[0].short);
+  const [currency, setCurrency] = useState("EUR");
   const [result, setResult] = useState("");
+
+  const {rates, date} = useData();
 
   const onInputChange = ({ target }) => setAmount(target.value);
 
   const onSelectChange = ({ target }) => setCurrency(target.value);
 
   const calculateResult = (amount, currency) => {
-    const { rate, short } = currencies.find(({ short }) => short === currency);
-
-    setResult(`${(+amount / rate).toFixed(2)}\u00A0${short}`);
+    setResult(`${(+amount * rates[currency]).toFixed(2)}\u00A0${currency}`);
   }
 
   const onFormSubmit = (event) => {
     event.preventDefault();
     calculateResult(amount, currency);
   }
+
 
   return (
     <form onSubmit={onFormSubmit}>
@@ -51,12 +52,12 @@ const Form = () => {
               value={currency}
               onChange={onSelectChange}
             >
-              {currencies.map((currency) => (
+              {rates.map((rates) => (
                 <option
-                  key={currency.short}
-                  value={currency.short}
+                  key={rates}
+                  value={rates}
                 >
-                  {currency.name}
+                  {rates}
                 </option>
               ))};
             </Select>
@@ -69,6 +70,7 @@ const Form = () => {
         </p>
         <Paragraph condition>*Wartość wymagana</Paragraph>
         <Paragraph amount>Nowa kwota wynosi:<Strong> {result}</Strong></Paragraph>
+        <Paragraph info>Kursy walut pobrano z Europejskiego Centralnego Banku w dniu {date}</Paragraph>
       </Fieldset>
     </form>
   )
