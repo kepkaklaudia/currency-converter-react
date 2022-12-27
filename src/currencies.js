@@ -1,22 +1,25 @@
-export const currencies = [
-  {
-    name: "EUR - Euro",
-    short: "EUR",
-    rate: 4.70,
-  },
-  {
-    name: "USD - Dolar amerykański",
-    short: "USD",
-    rate: 4.51,
-  },
-  {
-    name: "GBP - Funt brytyjski",
-    short: "GBP",
-    rate: 5.37,
-  },
-  {
-    name: "CHF - Frank Szwajcarski",
-    short: "CHF",
-    rate: 4.80,
-  },
-];
+import { useState, useEffect } from "react";
+
+export const useData = () => {
+  const [rates, setRates] = useState();
+  const [date, setDate] = useState();
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await fetch("https://api.exchangerate.host/latest?base=PLN")
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        }
+        const data = await response.json();
+        setRates(Object.keys(data.rates));
+        setDate(data.date);
+      } catch (error) {
+        console.error("Coś złego się stało!", error);
+      }
+    };
+    getData();
+  }, []);
+
+  return { rates, date };
+};
