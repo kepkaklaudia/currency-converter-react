@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.main`
 	width: 515px;
-	height: 350px;
+	height: 370px;
 	margin: 100px auto;
 	padding: 20px 20px;
 	background-color: #fffcce;
@@ -11,6 +11,6 @@ export const Container = styled.main`
 
 	@media (max-width: 600px) {
     width: 300px;
-    height: 430px;
+    height: 450px;
 	}
 `;
