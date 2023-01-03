@@ -21,7 +21,7 @@ export const MoneyIcon = styled.div`
     }
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: ${({theme}) => theme.breakpoint.mobileMax}) {
     font-size: 30px;
   }
 `;
@@ -30,8 +30,9 @@ export const Paragraph = styled.p`
   font-size: 20px;
   text-align: center;
   margin-top: 120px;
+  color: ${({theme}) => theme.color.crimson};
 
-  @media (max-width: 600px) {
+  @media (max-width: ${({theme}) => theme.breakpoint.mobileMax}) {
     font-size: 16px;
     margin-top: 170px;
   }
