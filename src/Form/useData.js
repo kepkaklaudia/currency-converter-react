@@ -12,15 +12,12 @@ export const useData = () => {
         if (!response.ok) {
           throw new Error(response.statusText);
         }
-
         const { date, rates } = await response.json();
-
         setRatesData({
           date,
           rates,
           status: "success",
         });
-
       } catch (error) {
         console.error("Ups... Coś złego się stało!🤨", error);
         setRatesData({
