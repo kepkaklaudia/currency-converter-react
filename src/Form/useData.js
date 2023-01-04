@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 
 export const useData = () => {
-  const [rates, setRates] = useState([]);
-  const [date, setDate] = useState();
-  const [short, setShort] = useState([]);
-  const [loading, setLoading] = useState("loading");
+  const [ratesData, setRatesData] = useState({
+    status: "loading",
+  });
 
   useEffect(() => {
     const getData = async () => {
@@ -13,18 +12,25 @@ export const useData = () => {
         if (!response.ok) {
           throw new Error(response.statusText);
         }
-        const data = await response.json();
-        setShort(Object.keys(data.rates));
-        setDate(data.date);
-        setRates(data.rates);
-        setLoading("success");
+
+        const { date, rates } = await response.json();
+
+        setRatesData({
+          date,
+          rates,
+          status: "success",
+        });
+
       } catch (error) {
         console.error("Ups... Coś złego się stało!🤨", error);
-        setLoading("error");
+        setRatesData({
+          status: "error",
+        });
       }
     };
+
     setTimeout(getData, 3000);
   }, []);
 
-  return { rates, date, short, loading };
+  return ratesData;
 };

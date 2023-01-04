@@ -9,13 +9,14 @@ const Form = () => {
   const [currency, setCurrency] = useState("EUR");
   const [result, setResult] = useState("");
 
-  const { rates, date, short, loading } = useData();
+  const ratesData = useData();
+  const currencyOptions = ratesData.rates ? Object.keys(ratesData.rates) : [];
 
   const onInputChange = ({ target }) => setAmount(target.value);
   const onSelectChange = ({ target }) => setCurrency(target.value);
 
   const calculateResult = (amount, currency) => {
-    setResult(`${(+amount * rates[currency]).toFixed(2)}\u00A0${currency}`);
+    setResult(`${(+amount * ratesData.rates[currency]).toFixed(2)}\u00A0${currency}`);
   }
 
   const onFormSubmit = (event) => {
@@ -25,8 +26,8 @@ const Form = () => {
 
   return (
     <form onSubmit={onFormSubmit}>
-      {loading === "loading" ? <Loading></Loading>
-        : loading === "error" ? <Error></Error>
+      {ratesData.status === "loading" ? <Loading></Loading>
+        : ratesData.status === "error" ? <Error></Error>
           : (<>
             <Fieldset>
               <Legend>
@@ -55,12 +56,12 @@ const Form = () => {
                     value={currency}
                     onChange={onSelectChange}
                   >
-                    {short.map((short) => (
+                    {currencyOptions.map((currencyOptions) => (
                       <option
-                        key={short}
-                        value={short}
+                        key={currencyOptions}
+                        value={currencyOptions}
                       >
-                        {short}
+                        {currencyOptions}
                       </option>
                     ))};
                   </Select>
@@ -79,7 +80,7 @@ const Form = () => {
                 <Strong> {result}</Strong>
               </Paragraph>
               <Paragraph info>
-                Kursy walut pobrano z Europejskiego Centralnego Banku w dniu {date}
+                Kursy walut pobrano z Europejskiego Centralnego Banku w dniu {ratesData.date}
               </Paragraph>
             </Fieldset>
           </>)
