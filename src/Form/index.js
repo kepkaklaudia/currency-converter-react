@@ -10,13 +10,14 @@ const Form = () => {
   const [result, setResult] = useState("");
 
   const ratesData = useData();
-  const currencyOptions = ratesData.rates ? Object.keys(ratesData.rates) : [];
+  const { date, rates, status } = ratesData;
+  const currencyOptions = rates ? Object.keys(rates) : [];
 
   const onInputChange = ({ target }) => setAmount(target.value);
   const onSelectChange = ({ target }) => setCurrency(target.value);
 
   const calculateResult = (amount, currency) => {
-    setResult(`${(+amount * ratesData.rates[currency]).toFixed(2)}\u00A0${currency}`);
+    setResult(`${(+amount * rates[currency]).toFixed(2)}\u00A0${currency}`);
   }
 
   const onFormSubmit = (event) => {
@@ -26,8 +27,8 @@ const Form = () => {
 
   return (
     <form onSubmit={onFormSubmit}>
-      {ratesData.status === "loading" ? <Loading></Loading>
-        : ratesData.status === "error" ? <Error></Error>
+      {status === "loading" ? <Loading></Loading>
+        : status === "error" ? <Error></Error>
           : (<>
             <Fieldset>
               <Legend>
@@ -80,7 +81,7 @@ const Form = () => {
                 <Strong> {result}</Strong>
               </Paragraph>
               <Paragraph info>
-                Kursy walut pobrano z Europejskiego Centralnego Banku w dniu {ratesData.date}
+                Kursy walut pobrano z Europejskiego Centralnego Banku w dniu {date}
               </Paragraph>
             </Fieldset>
           </>)
