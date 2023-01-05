@@ -25,6 +25,14 @@ When you click "Przelicz kwotę!" button, you will see your amount in the new cu
 When you are in mobile mode (maximum width of screen: 600px) you can notice some changes. 
 The box is slightly smaller and the fields are arranged in one column to fit on mobile screens.
 
+## API Data
+Exchange rates are taken from the European Central Bank, so the calculated values ​​are up-to-date.
+
+If the calculator fails to download data from API, the user will be shown the appropriate failure information.
+![gifError](images/error.gif)
+
+In addition, in the upper right corner of the calculator you can see the current time and date.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -64,4 +72,4 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 ## Technologies used
 <img src="images/myIcons/html.png" height="90"/> <img src="images/myIcons/css.png" height="90"/> <img src="images/myIcons/js.png" height="90"/> <img src="images/myIcons/es6.png" height="90"/> 
 
-<img src="images/myIcons/bem.png" height="90"/> <img src="images/myIcons/norm.png" height="90"/> <img src="images/myIcons/git.png" height="90"/> <img src="images/myIcons/react.png" height="90"/>
+<img src="images/myIcons/bem.png" height="90"/> <img src="images/myIcons/norm.png" height="90"/> <img src="images/myIcons/git.png" height="90"/> <img src="images/myIcons/react.png" height="90"/> <img src="images/myIcons/api.png" height="90"/>
