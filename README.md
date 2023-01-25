@@ -1,7 +1,7 @@
 ## <img src="public/icon.png" height="30"/> Currency Converter Website
 <img src="images/Currency%20Converter.gif" width="250" height="250"/>
 
-<img src="images/myIcons/kk.png" height="15"/>Made by Klaudia Kępka
+<img src="images/myIcons/iconK.svg" height="15"/>Made by Klaudia Kępka
 
 ## <img src="images/myIcons/demo.png" height="20"/> Currency Converter React Demo Website:
 [Currency Converter React Demo Website](https://kepkaklaudia.github.io/currency-converter-react/)
