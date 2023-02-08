@@ -17,7 +17,10 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${({theme}) => theme.color.moon};
     background-blend-mode: overlay;
     background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
-    min-height: 600px;
+    width: 100%;
+    min-height: 100%;
+    position: absolute;
   }
 `;
