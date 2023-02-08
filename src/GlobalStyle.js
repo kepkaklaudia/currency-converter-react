@@ -21,6 +21,5 @@ export const GlobalStyle = createGlobalStyle`
     background-size: cover;
     width: 100%;
     min-height: 100%;
-    position: absolute;
   }
 `;
