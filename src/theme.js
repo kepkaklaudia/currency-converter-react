@@ -9,6 +9,6 @@ export const theme = {
     moon: "#e4e3d6",
   },
   breakpoint: {
-    mobileMax: "600px;",
+    mobileMax: "600px",
   },
 };
